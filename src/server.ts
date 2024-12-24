@@ -6,6 +6,7 @@ import {
 } from 'fastify-type-provider-zod'
 import { connectDatabase } from './database'
 import { createGroup } from './routes/create-group'
+import { getGroup } from './routes/get-group'
 import { getGroups } from './routes/get-groups'
 import { login } from './routes/login'
 import { register } from './routes/register'
@@ -31,6 +32,7 @@ app.register(register)
 app.register(login)
 app.register(createGroup)
 app.register(getGroups)
+app.register(getGroup)
 
 /** Start server */
 app.listen({ port }).then(() => {
