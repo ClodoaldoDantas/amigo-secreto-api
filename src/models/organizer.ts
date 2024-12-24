@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 
-const userSchema = new Schema(
+const organizerSchema = new Schema(
 	{
 		email: {
 			type: String,
@@ -17,4 +17,4 @@ const userSchema = new Schema(
 	},
 )
 
-export const User = mongoose.model('User', userSchema)
+export const Organizer = mongoose.model('Organizer', organizerSchema)

@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt'
 import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
-import { User } from '../models/user'
+import { Organizer } from '../models/organizer'
 
 export async function register(app: FastifyInstance) {
 	app.withTypeProvider<ZodTypeProvider>().post(
@@ -26,7 +26,7 @@ export async function register(app: FastifyInstance) {
 		async (request, reply) => {
 			const { email, password } = request.body
 
-			const userAlreadyExists = await User.findOne({ email }).exec()
+			const userAlreadyExists = await Organizer.findOne({ email }).exec()
 
 			if (userAlreadyExists) {
 				return reply.status(409).send({
@@ -36,7 +36,7 @@ export async function register(app: FastifyInstance) {
 
 			const hashedPassword = await bcrypt.hash(password, 10)
 
-			await User.create({
+			await Organizer.create({
 				email,
 				password: hashedPassword,
 			})

@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt'
 import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
-import { User } from '../models/user'
+import { Organizer } from '../models/organizer'
 
 export async function login(app: FastifyInstance) {
 	app.withTypeProvider<ZodTypeProvider>().post(
@@ -30,7 +30,7 @@ export async function login(app: FastifyInstance) {
 		async (request, reply) => {
 			const { email, password } = request.body
 
-			const user = await User.findOne({ email })
+			const user = await Organizer.findOne({ email })
 
 			if (!user) {
 				return reply.status(400).send({ message: 'Invalid credentials' })
