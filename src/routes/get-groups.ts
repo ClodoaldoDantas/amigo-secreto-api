@@ -16,6 +16,7 @@ export async function getGroups(app: FastifyInstance) {
 							z.object({
 								_id: z.any(),
 								name: z.string(),
+								createdAt: z.date(),
 							}),
 						),
 					}),
