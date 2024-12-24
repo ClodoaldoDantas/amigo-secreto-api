@@ -10,6 +10,7 @@ import { getGroup } from './routes/get-group'
 import { getGroups } from './routes/get-groups'
 import { login } from './routes/login'
 import { register } from './routes/register'
+import { revealSecretFriend } from './routes/reveal-secret-friend'
 
 const app = fastify()
 const port = 3333
@@ -33,6 +34,7 @@ app.register(login)
 app.register(createGroup)
 app.register(getGroups)
 app.register(getGroup)
+app.register(revealSecretFriend)
 
 /** Start server */
 app.listen({ port }).then(() => {
