@@ -4,9 +4,9 @@ import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
 import { User } from '../models/user'
 
-export async function createUser(app: FastifyInstance) {
+export async function register(app: FastifyInstance) {
 	app.withTypeProvider<ZodTypeProvider>().post(
-		'/users',
+		'/register',
 		{
 			schema: {
 				body: z.object({
