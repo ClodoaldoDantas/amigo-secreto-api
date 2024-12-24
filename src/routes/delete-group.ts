@@ -4,27 +4,18 @@ import z from 'zod'
 import { verifyJwt } from '../middlewares/verify-jwt'
 import { Group } from '../models/group'
 
-export async function getGroup(app: FastifyInstance) {
-	app.withTypeProvider<ZodTypeProvider>().get(
+export async function deleteGroup(app: FastifyInstance) {
+	app.withTypeProvider<ZodTypeProvider>().delete(
 		'/groups/:id',
 		{
 			onRequest: [verifyJwt],
 			schema: {
 				params: z.object({
-					id: z.string(),
+					id: z.any(),
 				}),
 				response: {
 					200: z.object({
-						group: z.object({
-							_id: z.any(),
-							name: z.string(),
-							participants: z.array(
-								z.object({
-									_id: z.any(),
-									name: z.string(),
-								}),
-							),
-						}),
+						message: z.string(),
 					}),
 					404: z.object({
 						message: z.string(),
@@ -38,7 +29,7 @@ export async function getGroup(app: FastifyInstance) {
 		async (request, reply) => {
 			const { id } = request.params
 
-			const group = await Group.findById(id).exec()
+			const group = await Group.findById(id)
 
 			if (!group) {
 				return reply.status(404).send({
@@ -52,7 +43,11 @@ export async function getGroup(app: FastifyInstance) {
 				})
 			}
 
-			return reply.send({ group })
+			await Group.deleteOne({ _id: id })
+
+			return reply.send({
+				message: 'Group deleted successfully',
+			})
 		},
 	)
 }

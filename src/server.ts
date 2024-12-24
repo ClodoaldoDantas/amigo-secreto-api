@@ -6,6 +6,7 @@ import {
 } from 'fastify-type-provider-zod'
 import { connectDatabase } from './database'
 import { createGroup } from './routes/create-group'
+import { deleteGroup } from './routes/delete-group'
 import { getGroup } from './routes/get-group'
 import { getGroups } from './routes/get-groups'
 import { login } from './routes/login'
@@ -34,6 +35,7 @@ app.register(login)
 app.register(createGroup)
 app.register(getGroups)
 app.register(getGroup)
+app.register(deleteGroup)
 app.register(revealSecretFriend)
 
 /** Start server */
