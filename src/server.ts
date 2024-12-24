@@ -5,7 +5,7 @@ import {
 	validatorCompiler,
 } from 'fastify-type-provider-zod'
 import { connectDatabase } from './database'
-import { verifyJwt } from './middlewares/verify-jwt'
+import { createGroup } from './routes/create-group'
 import { login } from './routes/login'
 import { register } from './routes/register'
 
@@ -28,10 +28,7 @@ connectDatabase()
 /** Register routes */
 app.register(register)
 app.register(login)
-
-app.get('/protected', { onRequest: [verifyJwt] }, (_, reply) => {
-	reply.send('Welcome')
-})
+app.register(createGroup)
 
 /** Start server */
 app.listen({ port }).then(() => {
