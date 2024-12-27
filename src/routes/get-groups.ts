@@ -10,6 +10,7 @@ export async function getGroups(app: FastifyInstance) {
 		{
 			onRequest: [verifyJwt],
 			schema: {
+				tags: ['groups'],
 				response: {
 					200: z.object({
 						groups: z.array(

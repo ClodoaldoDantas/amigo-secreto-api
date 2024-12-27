@@ -9,6 +9,7 @@ export async function login(app: FastifyInstance) {
 		'/login',
 		{
 			schema: {
+				tags: ['auth'],
 				body: z.object({
 					email: z.string().email(),
 					password: z.string().min(6),

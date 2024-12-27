@@ -10,6 +10,7 @@ export async function revealSecretFriend(app: FastifyInstance) {
 		{
 			onRequest: [verifyJwt],
 			schema: {
+				tags: ['reveal'],
 				params: z.object({
 					participantId: z.string(),
 				}),

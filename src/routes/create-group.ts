@@ -11,6 +11,7 @@ export async function createGroup(app: FastifyInstance) {
 		{
 			onRequest: [verifyJwt],
 			schema: {
+				tags: ['groups'],
 				body: z.object({
 					name: z.string(),
 					participants: z.array(z.string()),

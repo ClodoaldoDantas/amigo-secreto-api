@@ -10,6 +10,7 @@ export async function deleteGroup(app: FastifyInstance) {
 		{
 			onRequest: [verifyJwt],
 			schema: {
+				tags: ['groups'],
 				params: z.object({
 					id: z.any(),
 				}),
