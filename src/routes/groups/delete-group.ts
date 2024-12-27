@@ -1,8 +1,8 @@
+import { verifyJwt } from '@/middlewares/verify-jwt'
+import { Group } from '@/models/group'
 import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
-import { verifyJwt } from '../middlewares/verify-jwt'
-import { Group } from '../models/group'
 
 export async function deleteGroup(app: FastifyInstance) {
 	app.withTypeProvider<ZodTypeProvider>().delete(

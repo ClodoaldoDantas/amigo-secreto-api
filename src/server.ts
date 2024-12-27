@@ -1,3 +1,11 @@
+import { connectDatabase } from '@/database'
+import { login } from '@/routes/auth/login'
+import { register } from '@/routes/auth/register'
+import { createGroup } from '@/routes/groups/create-group'
+import { deleteGroup } from '@/routes/groups/delete-group'
+import { getGroup } from '@/routes/groups/get-group'
+import { getGroups } from '@/routes/groups/get-groups'
+import { revealSecretFriend } from '@/routes/secret-friend/reveal-secret-friend'
 import fastifyJwt from '@fastify/jwt'
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUi from '@fastify/swagger-ui'
@@ -7,14 +15,6 @@ import {
 	serializerCompiler,
 	validatorCompiler,
 } from 'fastify-type-provider-zod'
-import { connectDatabase } from './database'
-import { createGroup } from './routes/create-group'
-import { deleteGroup } from './routes/delete-group'
-import { getGroup } from './routes/get-group'
-import { getGroups } from './routes/get-groups'
-import { login } from './routes/login'
-import { register } from './routes/register'
-import { revealSecretFriend } from './routes/reveal-secret-friend'
 
 const app = fastify()
 const port = 3333

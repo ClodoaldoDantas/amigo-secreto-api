@@ -1,8 +1,8 @@
+import { Organizer } from '@/models/organizer'
 import bcrypt from 'bcrypt'
 import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
-import { Organizer } from '../models/organizer'
 
 export async function login(app: FastifyInstance) {
 	app.withTypeProvider<ZodTypeProvider>().post(

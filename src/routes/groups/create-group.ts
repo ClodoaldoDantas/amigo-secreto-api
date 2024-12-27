@@ -1,9 +1,9 @@
+import { verifyJwt } from '@/middlewares/verify-jwt'
+import { Group } from '@/models/group'
+import { drawParticipants } from '@/utils/shuffle'
 import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
-import { verifyJwt } from '../middlewares/verify-jwt'
-import { Group } from '../models/group'
-import { drawParticipants } from '../utils/shuffle'
 
 export async function createGroup(app: FastifyInstance) {
 	app.withTypeProvider<ZodTypeProvider>().post(
