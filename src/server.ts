@@ -6,6 +6,7 @@ import { deleteGroup } from '@/routes/groups/delete-group'
 import { getGroup } from '@/routes/groups/get-group'
 import { getGroups } from '@/routes/groups/get-groups'
 import { revealSecretFriend } from '@/routes/secret-friend/reveal-secret-friend'
+import fastifyCors from '@fastify/cors'
 import fastifyJwt from '@fastify/jwt'
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUi from '@fastify/swagger-ui'
@@ -20,6 +21,10 @@ const app = fastify()
 const port = 3333
 
 /** Register plugins */
+app.register(fastifyCors, {
+	origin: '*',
+})
+
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
