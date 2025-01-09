@@ -32,7 +32,7 @@ export async function createGroup(app: FastifyInstance) {
 
 			if (participants.length < 3) {
 				return reply.status(400).send({
-					message: 'You need at least 3 participants',
+					message: 'É necessário ter pelo menos 3 participantes',
 				})
 			}
 
@@ -45,7 +45,7 @@ export async function createGroup(app: FastifyInstance) {
 			})
 
 			return reply.status(201).send({
-				message: 'Group created successfully',
+				message: 'Grupo criado com sucesso',
 			})
 		},
 	)

@@ -34,13 +34,13 @@ export async function login(app: FastifyInstance) {
 			const user = await Organizer.findOne({ email })
 
 			if (!user) {
-				return reply.status(400).send({ message: 'Invalid credentials' })
+				return reply.status(400).send({ message: 'Credenciais inválidas' })
 			}
 
 			const passwordMatch = await bcrypt.compare(password, user.password)
 
 			if (!passwordMatch) {
-				return reply.status(400).send({ message: 'Invalid credentials' })
+				return reply.status(400).send({ message: 'Credenciais inválidas' })
 			}
 
 			const token = app.jwt.sign({ id: user._id })

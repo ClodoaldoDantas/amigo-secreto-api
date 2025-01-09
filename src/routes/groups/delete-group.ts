@@ -34,20 +34,20 @@ export async function deleteGroup(app: FastifyInstance) {
 
 			if (!group) {
 				return reply.status(404).send({
-					message: 'Group not found',
+					message: 'Grupo não encontrado',
 				})
 			}
 
 			if (group.organizer?.toString() !== request.user.id) {
 				return reply.status(401).send({
-					message: 'You are not the organizer of this group',
+					message: 'Você não tem permissão para excluir este grupo',
 				})
 			}
 
 			await Group.deleteOne({ _id: id })
 
 			return reply.send({
-				message: 'Group deleted successfully',
+				message: 'Grupo excluído com sucesso',
 			})
 		},
 	)

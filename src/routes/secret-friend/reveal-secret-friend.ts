@@ -33,7 +33,7 @@ export async function revealSecretFriend(app: FastifyInstance) {
 			)
 
 			if (!group) {
-				return reply.status(400).send({ message: 'Invalid code' })
+				return reply.status(400).send({ message: 'Código inválido' })
 			}
 
 			const { secret_friend } = group.participants[0]

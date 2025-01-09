@@ -43,13 +43,13 @@ export async function getGroup(app: FastifyInstance) {
 
 			if (!group) {
 				return reply.status(404).send({
-					message: 'Group not found',
+					message: 'Grupo não encontrado',
 				})
 			}
 
 			if (group.organizer?.toString() !== request.user.id) {
 				return reply.status(401).send({
-					message: 'You are not the organizer of this group',
+					message: 'Você não tem permissão para acessar este grupo',
 				})
 			}
 

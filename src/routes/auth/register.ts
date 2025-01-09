@@ -31,7 +31,7 @@ export async function register(app: FastifyInstance) {
 
 			if (userAlreadyExists) {
 				return reply.status(409).send({
-					message: 'User already exists',
+					message: 'Usuário já existe',
 				})
 			}
 
@@ -43,7 +43,7 @@ export async function register(app: FastifyInstance) {
 			})
 
 			return reply.status(201).send({
-				message: 'User created successfully',
+				message: 'Usuário criado com sucesso',
 			})
 		},
 	)
