@@ -63,6 +63,6 @@ app.register(deleteGroup)
 app.register(revealSecretFriend)
 
 /** Start server */
-app.listen({ port }).then(() => {
+app.listen({ port, host: '0.0.0.0' }).then(() => {
 	console.log(`🔥 Server is running on port ${port}`)
 })
